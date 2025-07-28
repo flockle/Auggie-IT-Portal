@@ -1,0 +1,43 @@
+﻿@model List<Auggie_IT_Support_Portal.Models.Other>
+
+@{
+    ViewData["Title"] = "📦 Add or Remove Software";
+}
+
+
+
+
+<div class="container">
+    <h1> @ViewData["Title"]</h1>
+
+
+    <ol>
+        @foreach (var step in Model)
+        {
+            <li>
+                <strong>@step.Title</strong><br />
+
+                @if (step.Info != null && step.Info.Any())
+                {
+                    <ul>
+                        @foreach (var infoItem in step.Info)
+                        {
+                            <li>@infoItem</li>
+                        }
+
+                    </ul>
+
+                    @if (!string.IsNullOrEmpty(step.ImageUrl))
+                    {
+                        <img src="@step.ImageUrl" alt="Image for @step.Title" class="img-fluid" />
+                    }
+
+                }
+            </li>
+        }
+    </ol>
+
+
+
+</div>
+

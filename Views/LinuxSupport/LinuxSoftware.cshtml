@@ -1,0 +1,49 @@
+﻿@model List<Auggie_IT_Support_Portal.Models.LinuxSoftware>
+
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutLinux.cshtml";
+}
+
+@{
+    ViewData["Title"] = "📦 Software Update";
+}
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+
+    <ol>
+        @foreach (var item in Model)
+        {
+            <li class="mb-4">
+                <strong>@item.Title</strong>
+
+                @if (!string.IsNullOrEmpty(item.Description))
+                {
+                    <p>@item.Description</p>
+                }
+
+                @if (!string.IsNullOrEmpty(item.ImageUrl))
+                {
+                    <img src="@item.ImageUrl" alt="Image for @item.Title" class="img-fluid my-2" />
+                }
+
+                @if (!string.IsNullOrEmpty(item.Desc))
+                {
+                    <p><em>@item.Desc</em></p>
+                }
+
+                @if (item.subdes != null && item.subdes.Any())
+                {
+                    <ul>
+                        @foreach (var detail in item.subdes)
+                        {
+                            <li>@detail</li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    </ol>
+</div>

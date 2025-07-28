@@ -1,0 +1,83 @@
+﻿@model Auggie_IT_Support_Portal.Models.ViewModels.ImageUpdateViewModel
+@{
+    ViewData["Title"] = "Updating the Windows IoT Image";
+}
+
+<div class="container">
+    <h1>🚀 @ViewData["Title"]</h1>
+    <p>This guide outlines the steps to update the Auggie Windows IoT image.</p>
+
+    <h2>🛠️ Steps:</h2>
+    <ol>
+        @foreach (var step in Model.ImageUpdateSteps)
+        {
+            <li>
+                <strong>@step.Title</strong><br />
+                @if (!string.IsNullOrEmpty(step.Description))
+                {
+                    <p>@step.Description</p>
+                }
+
+                @if (step.SubSteps != null && step.SubSteps.Any())
+                {
+                    <ul>
+                        @foreach (var sub in step.SubSteps)
+                        {
+                            <li>@sub</li>
+                        }
+                    </ul>
+                }
+
+                @if (!string.IsNullOrEmpty(step.Tip))
+                {
+                    <div class="tip-box">💡 <strong>Tip:</strong> @step.Tip</div>
+                }
+            </li>
+        }
+    </ol>
+</div>
+<div>
+    <h1>🔧 Setup After Flashing Windows IoT Image</h1>
+    <ol>
+        @foreach (var step in Model.AfterFlashSteps)
+        {
+            <li>
+                <strong>@step.Title</strong><br />
+
+                @if (!string.IsNullOrEmpty(step.Description))
+                {
+                    <p>@step.Description</p>
+                }
+
+                @if (step.SubSteps != null && step.SubSteps.Any())
+                {
+                    <ul style="padding-left: 1.25rem;">
+                        @foreach (var sub in step.SubSteps)
+                        {
+                            var trimmed = sub?.Trim() ?? "";
+
+                            if (trimmed == "Embedded Logon:" || trimmed == "Startup Manger:" || trimmed == "Lockdown Settings:")
+                            {
+                                <li style="list-style-type: none; margin-left: 0;"><strong>@sub</strong></li>
+                            }
+                            else if (trimmed.StartsWith("i.") || trimmed.StartsWith("ii.") || trimmed.StartsWith("iii.") || trimmed.StartsWith("iv."))
+                            {
+                                <li style="margin-left: 2.5rem;">@sub</li>
+                            }
+                            else
+                            {
+                                <li>@sub</li>
+                            }
+                        }
+                    </ul>
+                }
+
+                @if (!string.IsNullOrEmpty(step.Tip))
+                {
+                    <div class="tip-box">💡 <strong>Tip:</strong> @step.Tip</div>
+                }
+            </li>
+        }
+    </ol>
+</div>
+

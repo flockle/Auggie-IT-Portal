@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Linux Support - Auggie</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- Bootstrap CSS (CDN for simplicity) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom site styling -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+
+<body class="linux">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark page-theme shadow-sm">
+            ... <div class="container">
+                <a class="navbar-brand fw-bold" asp-controller="Home" asp-action="Index">Auggie IT Support</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="LinuxSupport" asp-action="LinuxSoftware">Software Update</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="LinuxSupport" asp-action="Camera">Camera Issues</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="LinuxSupport" asp-action="wifiL">Wi-Fi Issues</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="LinuxSupport" asp-action="Boot">Boot Issues</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-light text-muted border-top py-3 mt-auto">
+        <div class="container text-center">
+            <p><strong>Credits & Acknowledgments</strong></p>
+            <p>Website created by <strong>Fiona Lockley</strong> for internal IT use at <strong>AirPro Diagnostics</strong>.</p>
+            <p>Based on original SharePoint documentation by <strong>Rob Morris</strong>.</p>
+            <small>&copy; 2025 Auggie IT Support Portal | Fiona Lockley</small>
+        </div>
+    </footer>
+    <!-- Bootstrap Bundle (JS + Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/site.js"></script>
+</body>
+</html>

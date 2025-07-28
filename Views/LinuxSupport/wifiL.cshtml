@@ -1,0 +1,26 @@
+﻿@model Auggie_IT_Support_Portal.Models.wifiL
+
+@{
+    ViewData["Title"] = "📡 " + Model.Title;
+}
+@{
+    Layout = "~/Views/Shared/_LayoutLinux.cshtml";
+}
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+
+    <p>@Model.Description</p>
+
+    @if (Model.ImageUrl != null && Model.ImageUrl.Any())
+    {
+        <div class="row">
+            @foreach (var image in Model.ImageUrl)
+            {
+                <div class="col-md-6 mb-3">
+                    <img src="@image" alt="Wi-Fi Step Image" class="img-fluid rounded shadow-sm" />
+                </div>
+            }
+        </div>
+    }
+</div>
+

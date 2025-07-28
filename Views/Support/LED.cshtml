@@ -1,0 +1,62 @@
+﻿@model List<Auggie_IT_Support_Portal.Models.LED>
+@{
+    ViewData["Title"] = " LED Issues";
+    int index = 0;
+
+}
+
+<div class="container mt-5">
+    <h1> 🔆 @ViewData["Title"]</h1>
+
+    @foreach (var step in Model)
+    {
+        if (!string.IsNullOrEmpty(step.Title) ||
+        !string.IsNullOrEmpty(step.Description) ||
+        !string.IsNullOrEmpty(step.Info) ||
+        !string.IsNullOrEmpty(step.ImageUrl))
+        {
+            <div class="step mb-4">
+                @if (!string.IsNullOrEmpty(step.Title))
+                {
+                    <strong>@step.Title</strong>
+
+                    <br />
+                }
+
+                @if (!string.IsNullOrEmpty(step.Description))
+                {
+                    <p>@step.Description</p>
+                }
+
+                @* Special formatting for the second item *@
+                @if (index == 1)
+                {
+                    @if (!string.IsNullOrEmpty(step.ImageUrl))
+                    {
+                        <img src="@step.ImageUrl" alt="Image for @step.Title" class="step-image" />
+                    }
+
+                    <p>
+                        @Html.Raw("Open PowerShell in: C:\\Users\\AirPro\\.auggie\\scripts\\.<br/>")
+                        Run <code>lighton.ps1</code> and check if the LED lights are on.
+                    </p>
+                }
+                else
+                {
+                    @* Default formatting: Info first, then Image *@
+                    @if (!string.IsNullOrEmpty(step.Info))
+                    {
+                        <p>@Html.Raw(step.Info)</p>
+                    }
+
+                    @if (!string.IsNullOrEmpty(step.ImageUrl))
+                    {
+                        <img src="@step.ImageUrl" alt="Image for @step.Title" class="step-image" />
+                    }
+                }
+            </div>
+        }
+
+        index++;
+    }
+</div>

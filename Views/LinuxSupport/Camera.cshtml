@@ -1,0 +1,30 @@
+﻿@model List<Auggie_IT_Support_Portal.Models.Camera>
+
+@{
+    Layout = "~/Views/Shared/_LayoutLinux.cshtml";
+    ViewData["Title"] = "📷 Camera Diagnostics";
+}
+
+<div class="container mt-4">
+    <h1>@ViewData["Title"]</h1>
+
+    <ol>
+        @foreach (var camera in Model)
+        {
+            <li class="mb-4">
+                <strong>@camera.Title</strong>
+
+                @if (!string.IsNullOrEmpty(camera.Description))
+                {
+                    <p>@camera.Description</p>
+                }
+
+                @if (!string.IsNullOrEmpty(camera.ImageUrl))
+                {
+                    <img src="@camera.ImageUrl" alt="Image for @camera.Title" class="img-fluid my-2" style="max-width: 100%; height: auto;" />
+                }
+            </li>
+        }
+    </ol>
+</div>
+

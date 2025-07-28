@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutLinux.cshtml";
+}
+
+<section class="text-center mb-5">
+    <h1 class="display-5 fw-bold">Welcome to the Auggie IT Support Portal</h1>
+    <p class="lead text-muted">This section provides troubleshooting guidance for Linux-based Auggie devices.</p>
+
+    <!-- ✅ This goes to back to Windows  -->
+    <form asp-controller="Home" asp-action="Index" method="get">
+        <button type="submit" class="custom-btn"> 🪟 Windows Troubleshooting </button>
+    </form>
+
+
+
+
+
+</section>
+<section class="mb-4">
+    <h2>🧭 Overview Sections</h2>
+    <p>
+        The Auggie IT Support Portal is designed to provide comprehensive assistance with technology services
+    </p>
+    <ul>
+        <li>Updating Software </li>
+        <li>Wi-Fi Configuration</li>
+        <li>Resolving camera functionality </li>
+        <li> Boot Failures</li>
+    </ul>
+    <p>
+        <div class="tip-box">⚠️<strong>Important Note:</strong>  Linux devices are being retired and will be transitioned to Windows-based tools.</div>
+    </p>
+</section>
+

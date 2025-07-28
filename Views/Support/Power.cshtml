@@ -1,0 +1,32 @@
+﻿@model List<Auggie_IT_Support_Portal.Models.Power>
+
+@{
+    ViewData["Title"] = " Power Issues";
+}
+
+<div class="container mt-5">
+    <h1> ⚡@ViewData["Title"]</h1>
+    <ol>
+        @foreach (var step in Model)
+        {
+            <li>
+                <strong>@step.Title</strong><br />
+                @if (!string.IsNullOrEmpty(step.Description))
+                {
+                    <p>@step.Description</p>
+                }
+
+                @if (step.SubSteps != null && step.SubSteps.Any())
+                {
+                    <ul>
+                        @foreach (var sub in step.SubSteps)
+                        {
+                            <li>@sub</li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    </ol>
+</div>
+

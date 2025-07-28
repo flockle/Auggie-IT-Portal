@@ -1,0 +1,82 @@
+﻿@model Auggie_IT_Support_Portal.ViewModels.ConnectivityViewModel
+
+@{
+    ViewData["Title"] = "🌐 Common Wi-Fi Issues and Solutions";
+}
+
+<div class="container mt-5">
+    <h1>@ViewData["Title"]</h1>
+
+    <ol>
+        @foreach (var step in Model.NetworkPage)
+        {
+            <li>
+                <strong>@step.Title</strong><br />
+
+                @if (!string.IsNullOrEmpty(step.Description))
+                {
+                    <p>@step.Description</p>
+                }
+
+                @if (step.Info != null && step.Info.Any())
+                {
+                    <ul>
+                        @foreach (var sub in step.Info)
+                        {
+                            <li>@sub</li>
+                        }
+                    </ul>
+                }
+
+
+            </li>
+        }
+
+        <!-- Advanced Connectivity Section -->
+        @foreach (var adv in Model.MoreWifi)
+        {
+            <li>
+                <strong>@adv.Title</strong>
+
+                @if (!string.IsNullOrEmpty(adv.Description))
+                {
+                    <p>@adv.Description</p>
+                }
+
+                @if (adv.Info != null && adv.Info.Any())
+                {
+                    <ul>
+                        @foreach (var detail in adv.Info)
+                        {
+                            <li>@detail</li>
+                        }
+                    </ul>
+                }
+
+                @if (!string.IsNullOrEmpty(adv.ImageUrl))
+                {
+                    <img src="@adv.ImageUrl" alt="Hotspot Help Image" />
+                }
+            </li>
+        }
+
+        <div>
+            <h1>Advanced Troubleshooting</h1>
+            @foreach (var adv in Model.Subwifi)
+            {
+            <li>
+                <strong>@adv.Title</strong>
+                    @if (adv.Info != null && adv.Info.Any())
+                    {
+                    <ul>
+                            @foreach (var line in adv.Info)
+                            {
+                            <li>@line</li>
+                            }
+                    </ul>
+                    }
+            </li>
+            }
+
+</div>
+

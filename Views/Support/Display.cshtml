@@ -1,0 +1,54 @@
+﻿@model List<Auggie_IT_Support_Portal.Models.DisplayIssue>
+@{
+    ViewData["Title"] = "Display Issues";
+}
+
+
+<div class="container">
+    <h1>🖥️ @ViewData["Title"]</h1>
+
+    <p> <img src="~/images/display2png.png" alt="Alternate Text" /></p>
+
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        var issue = Model[i];
+        <div class="faq-item">
+            <div class="faq-question">@(i + 1). @issue.Title</div>
+            <div class="faq-answer">
+                @if (!string.IsNullOrEmpty(issue.AdditionalInfo))
+                {
+                    <p>@issue.AdditionalInfo</p>
+                }
+
+                @if (!string.IsNullOrEmpty(issue.DisplayTips))
+                {
+                    <div class="highlight"> 💡 <strong>Tip:</strong> @issue.DisplayTips</div>
+
+                }
+
+                @if (issue.Lp3Steps?.Any() == true)
+                {
+                    <p>LP3:</p>
+                    <ul>
+                        @foreach (var step in issue.Lp3Steps)
+                        {
+                            <li>@step</li>
+                        }
+                    </ul>
+                }
+
+                @if (issue.Lp2Steps?.Any() == true)
+                {
+                    <p>LP2:</p>
+                    <ul>
+                        @foreach (var step in issue.Lp2Steps)
+                        {
+                            <li>@step</li>
+                        }
+                    </ul>
+                }
+            </div>
+        </div>
+    }
+</div>
+

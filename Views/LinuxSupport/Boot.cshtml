@@ -1,0 +1,57 @@
+﻿@model Auggie_IT_Support_Portal.Models.ViewModels.Bootup
+
+@{
+    Layout = "~/Views/Shared/_LayoutLinux.cshtml";
+    ViewData["Title"] = "Boot Troubleshooting";
+}
+
+<section class="mb-5">
+    <h2 class="mb-4">🧰 Boot Issues</h2>
+
+    @if (Model.Boots != null && Model.Boots.Any())
+    {
+        <ol>
+            @foreach (var step in Model.Boots)
+            {
+                <li class="mb-3">
+                    <h5>@step.Title</h5>
+                    <p>@step.Description</p>
+                </li>
+            }
+        </ol>
+    }
+    else
+    {
+        <p class="text-muted">No basic boot issues defined.</p>
+    }
+</section>
+
+<hr />
+
+<section class="mb-5">
+    <h2 class="mb-4">⚙️ Advanced Boot Issues</h2>
+
+    @if (Model.BootAdvcs != null && Model.BootAdvcs.Any())
+    {
+        <ol>
+            @foreach (var adv in Model.BootAdvcs)
+            {
+                <li class="mb-4">
+                    <h5>@adv.Title</h5>
+                    <p>@adv.Description</p>
+
+                    @if (!string.IsNullOrEmpty(adv.ImageUrl))
+                    {
+                        <div class="my-2">
+                            <img src="@adv.ImageUrl" alt="@adv.Title" class="img-fluid rounded" style="max-width: 100%; height: auto;" />
+                        </div>
+                    }
+                </li>
+            }
+        </ol>
+    }
+    else
+    {
+        <p class="text-muted">No advanced boot issues defined.</p>
+    }
+</section>
