@@ -6,3 +6,5 @@ It incorporates knowledge and process flows based on internal documentation from
 - Auggie system insights provided by the internal support IT department.
 - Windows IoT image handling inspired by internal IT protocols.
 
+Note: This project is not affiliated with or endorsed by  AirPro Diagnostics.
+
